@@ -37,3 +37,8 @@ This starter is meant as a minimal reproduction of a Gatsby project in order to 
 
 
 Site URL: hv-jamstack-todos
+
+
+4.  **as we are work working on netlify local sever so better to Start will Netlify dev!**
+
+    Your site is now running at `http://localhost:8888`!

@@ -27,11 +27,11 @@ const resolvers = {
     todos: async (root, args, context) => {
       // return todosList
       try {
-        var adminClient = new faunadb.Client({ secret: 'fnAEvKRs8OACUX_nLeFLWtAK8ssSykHx-TAcRVaz' });
-
+        var adminClient = new faunadb.Client({ secret: process.env.FAUNADB_ADMIN_SECRET });
+        secret: process.env.FAUNADB_ADMIN_SECRET
         const result = await adminClient.query(
           q.Map(
-            q.Paginate(q.Match(q.Index('task'))),
+            q.Paginate(q.Match(q.Index('task'))),  // first you make a collection of name todos in faunadb then in that collection further make Index of name task then it will work
             q.Lambda(x => q.Get(x))
           )
         );
@@ -62,7 +62,7 @@ const resolvers = {
       console.log(todosList);*/
 
       try {
-        var adminClient = new faunadb.Client({ secret: 'fnAEvKRs8OACUX_nLeFLWtAK8ssSykHx-TAcRVaz' });
+        var adminClient = new faunadb.Client({ secret: process.env.FAUNADB_ADMIN_SECRET });
 
         const result = await adminClient.query(
           q.Create(
